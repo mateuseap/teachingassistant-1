@@ -14,6 +14,13 @@
     </td>
  </tr>
  <tr>
+    <td><label>Login do Github </label></td>
+    <td><input [(ngModel)]="aluno.github" ></td>
+    <td *ngIf="githubduplicado">
+      Já existe um aluno com esse Login do Github
+    </td>
+ </tr>
+ <tr>
     <td><label>e-mail </label></td>
     <td><input [(ngModel)]="aluno.email" ></td>
  </tr>
@@ -23,11 +30,13 @@
  <tr *ngIf="alunos.length > 0">
     <th>Nome</th>
     <th>CPF</th>
+    <th>Login do GitHub</th>
     <th>e-mail</th>
  </tr>
  <tr *ngFor="let a of alunos">
     <td>{{a.nome}}</td>
     <td>{{a.cpf}}</td>
+    <td>{{a.github}}</td>
     <td>{{a.email}}</td>
  </tr>
  </table>

@@ -12,19 +12,21 @@ import { AlunoService } from './aluno.service';
     aluno: Aluno = new Aluno();
     alunos: Aluno[] = [];
     cpfduplicado: boolean = false;
+    githubduplicado: boolean = false;
 
     constructor(private alunoService: AlunoService) {}
 
      criarAluno(a: Aluno): void {
        this.alunoService.criar(a)
               .subscribe(
-                ar => {
+                ar => { 
                   if (ar) {
                     this.alunos.push(ar);
                     this.aluno = new Aluno();
-                  } else {
+                  }else{
                     this.cpfduplicado = true;
-                  } 
+                    this.githubduplicado = true;
+                  }
                 },
                 msg => { alert(msg.message); }
               );
@@ -32,6 +34,7 @@ import { AlunoService } from './aluno.service';
 
     onMove(): void {
        this.cpfduplicado = false;
+       this.githubduplicado = false;
     }
 
      ngOnInit(): void {
